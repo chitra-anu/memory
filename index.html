@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Matching Game</title>
+    <meta name="description" content="">
+    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet" href="css/app.css">
+<script src="js/jquery-3.4.1.min.js"></script>
+</head>
+<body>
+
+    <div class="container">
+        <header>
+            <h1>Matching Game</h1>
+        </header>
+
+        <section class="score-panel">
+        	<ul class="stars">
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        		<li><i class="fa fa-star"></i></li>
+        	</ul>
+
+        	<span class="moves">0</span> Moves
+
+            <div class="restart">
+        		<i class="fa fa-repeat"></i>
+                <label id="minutes">00</label>:<label id="seconds">00</label>
+        	</div>
+        </section>
+
+        <ul class="deck">
+            <li class="card">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-cube"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-anchor"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-diamond"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-leaf"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bomb"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bolt"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-bicycle"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-paper-plane-o"></i>
+            </li>
+            <li class="card">
+                <i class="fa fa-cube"></i>
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/app.js"></script>
+<script>
+//  Reload Functionality
+$(".restart").click(function(){
+    location.reload();
+});
+//  Reload Functionality
+
+//  Timer Functionality
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+setInterval(setTime, 1000);
+
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+//  Timer Functionality
+
+//  Shuffle Functionality
+$(window).on("load", function () {
+    shuffle();
+});
+
+var moves = 0;
+var prev = '';
+var next = '';
+
+$(".card").click(function(){
+    // Moves Functionality    
+    if($(this).attr('class')=='card')
+    moves++;
+    $(".moves").text(moves);
+
+    // Open Functionality    
+    $(this).addClass("open show");
+
+    // Main Functionality
+    var t = $(this).find('i');
+    if(prev!='') {
+        next = t.attr('class');        
+        if(prev == next) {
+            console.log('matching');
+        } else {
+            console.log(' not matching');
+        }
+        prev = next = '';
+    } else {
+        prev = t.attr('class');
+    }
+    // Main Functionality
+
+});
+
+function shuffle() {
+    var ul = document.querySelector('.deck');
+    for (var i = ul.children.length; i >= 0; i--) {
+        ul.appendChild(ul.children[Math.random() * i | 0]);
+    }    
+}
+//  Shuffle & Open Functionality
+
+</script>
+</body>
+</html>
