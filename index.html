@@ -136,8 +136,15 @@ $(".card").click(function(){
     if(prev!='') {
         next = t.attr('class');        
         if(prev == next) {
+            if($('.card').hasClass('open')) {
+                $('.open').addClass("match");                 
+                $(this).addClass("match");                 
+                $('.card').removeClass("open show");
+            }
             console.log('matching');
         } else {
+            if($('.card').hasClass('open'))
+            $('.card').removeClass("open show");
             console.log(' not matching');
         }
         prev = next = '';
