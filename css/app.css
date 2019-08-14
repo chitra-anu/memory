@@ -107,3 +107,97 @@ h1 {
     float: right;
     cursor: pointer;
 }
+
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  text-align: center;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+.button {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+}
+
+.checked {
+  color: orange;
+}
+
+@media only screen and (max-width: 319px) {
+.container {
+    height: 70% !important;
+    margin-top: 10% !important;
+}
+
+.deck {
+    width: 32% !important;
+    min-height: 380px !important;
+}
+
+.deck .card {
+    height: 65px !important;
+    width: 65px !important;
+}
+}
+
+@media only screen and (min-width: 359px, max-width: 1022px) {
+.container {
+    height: 0% !important;
+    margin-top: 20% !important;
+}
+
+.deck {
+    width: 28% !important;
+    min-height: 396px !important;
+}
+
+.deck .card {
+    height: 65px !important;
+    width: 65px !important;
+}
+}
+
+/*@media only screen and (min-width: 1080px) {
+.container {
+  height: 90% !important;
+  margin-top: 2% !important;
+}
+
+.deck {
+  width: 75% !important;
+  min-height: 920px !important;
+}
+
+.deck .card {
+    height: 150px !important;
+    width: 150px !important;
+}
+}*/
