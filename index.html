@@ -98,6 +98,11 @@ var totalSeconds = 0;
 setInterval(setTime, 1000);
 
 function setTime() {
+  if($('.match').length>=16) {
+  secondsLabel.innerHTML = pad(totalSeconds % 60);
+  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));    
+    return;
+  }    
   ++totalSeconds;
   secondsLabel.innerHTML = pad(totalSeconds % 60);
   minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
